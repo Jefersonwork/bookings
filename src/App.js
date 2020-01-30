@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+import {
+  Container,
+  Header,
+  Title } from './components/style/content'
+
+import Card from './components/function/contet'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -21,10 +28,28 @@ class App extends Component {
   }
 
   render() {
+    let { data } = this.state
+    console.log(data)
     return (
-      <div>
-        <h1>teste 2</h1>
-      </div>
+      <Container>
+        <Header>
+          <Title>My bookings</Title>
+        </Header>
+        <div>
+          {
+            data.map(item => {
+            return( 
+              <Card 
+                bg={item.thumb}
+                place={item.destination}
+                dateIn={item.outboundDate}
+                dateOut={item.inboundDate}
+              />
+              )
+            })
+          }
+        </div>
+      </Container>
     )
   }
   
