@@ -29,7 +29,6 @@ class App extends Component {
 
   render() {
     let { data } = this.state
-    console.log(data)
     return (
       <Container>
         <Header>
@@ -37,9 +36,11 @@ class App extends Component {
         </Header>
         <div>
           {
-            data.map(item => {
+            data.map((item, index) => {
+  
             return( 
-              <Card 
+              <Card
+                key={index}
                 bg={item.thumb}
                 place={item.destination}
                 dateIn={item.outboundDate}
